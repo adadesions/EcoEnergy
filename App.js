@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native'
 import Expo, { AppLoading } from 'expo';
-import { Container, Header, Left, Button, Title, Body, Right, Content, Icon } from 'native-base';
+import { Container, Root } from 'native-base';
 
 // My Components
 import AHeader from './components/AHeader.js'
@@ -22,9 +22,11 @@ export default class App extends React.Component {
   render() {
     if(this.state.fontsAreLoaded){
       return (
-        <Container style={ styles.container }>
-          <AContent />
-        </Container>
+        <Root>
+          <Container style={ styles.container }>
+            <AContent />
+          </Container>
+        </Root>
       );
     }
     else {
@@ -37,7 +39,7 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container : {
     flex : 1,
-    justifyContent: 'center',    
+    justifyContent: 'center',
   }
 });
 
