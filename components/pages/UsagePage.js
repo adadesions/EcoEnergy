@@ -42,7 +42,7 @@ export default class UsagePage extends React.Component {
     let prv = parseInt(this.state.prvMonth);
     let cur = parseInt(this.state.curMonth);
     let units = parseInt(this.state.units);
-    if( cur < prv ){      
+    if( cur < prv ){
       Toast.show({
               text: 'Current MUST greater than Previous Month',
               position: 'bottom',
@@ -130,7 +130,7 @@ export default class UsagePage extends React.Component {
            style={{ backgroundColor: '#ff69b4' }}
            onPress={ () => this.props._onPress('team') }
           >
-           <Icon name="person" />
+           <Icon name="people" />
          </Button>
 
         </Fab>

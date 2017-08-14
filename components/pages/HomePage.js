@@ -32,7 +32,7 @@ export default class HomePage extends React.Component {
             <MenuButton text='Cost Estimate' icon='calculator' _onPress={ () => this.props._onPress('estimate') } />
           </View>
           <View style={ [styles.mainMenu, styles.row2] }>
-            <MenuButton text='About Team' icon='person' _onPress={ () => this.props._onPress('team') } />
+            <MenuButton text='About Team' icon='people' _onPress={ () => this.props._onPress('team') } />
             <MenuButton text='Coming Soon' icon='bulb' />
           </View>
         </View>

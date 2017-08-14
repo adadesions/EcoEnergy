@@ -24,7 +24,7 @@ export default class EstimatePage extends React.Component {
     this.state = {
       selected : [],
       timeOrder : [],
-      amount : 3,
+      amount : 2,
       header : "Cost Estimation",
       activeFab : false
     }
@@ -207,7 +207,7 @@ export default class EstimatePage extends React.Component {
            style={{ backgroundColor: '#ff69b4' }}
            onPress={ () => this.props._onPress('team') }
           >
-           <Icon name="person" />
+           <Icon name="people" />
          </Button>
         </Fab>
       </Image>
