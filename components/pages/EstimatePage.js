@@ -87,8 +87,8 @@ export default class EstimatePage extends React.Component {
 
   _onCalculate() {
     let info = [];
-    let amount = this.state.amount;
-    let time = this.state.timeOrder;
+    let amount = parseInt(this.state.amount);
+    let time = parseInt(this.state.timeOrder);
     let sum = 0;
     let result = 0;
     for(let i = 0; i < amount; i++){

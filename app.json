@@ -1,5 +1,15 @@
 {
   "expo": {
-    "sdkVersion": "19.0.0"
+    "sdkVersion": "19.0.0",
+    "name": "SaveEnergy",
+    "icon": "./public/assets/logo.png",
+    "slug": "adadesions",
+    "version": "1.0.0",
+    "ios": {
+      "bundleIdentifier": "com.adafactor.adadesions"
+    },
+    "android": {
+      "package": "com.adafactor.adadesions"
+    }
   }
 }

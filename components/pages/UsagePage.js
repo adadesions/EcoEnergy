@@ -39,10 +39,10 @@ export default class UsagePage extends React.Component {
   }
 
   _onPressButton() {
-    const prv = this.state.prvMonth;
-    const cur = this.state.curMonth;
-    const units = this.state.units;
-    if( cur < prv ){
+    let prv = parseInt(this.state.prvMonth);
+    let cur = parseInt(this.state.curMonth);
+    let units = parseInt(this.state.units);
+    if( cur < prv ){      
       Toast.show({
               text: 'Current MUST greater than Previous Month',
               position: 'bottom',
