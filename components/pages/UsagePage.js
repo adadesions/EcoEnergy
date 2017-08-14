@@ -64,7 +64,7 @@ export default class UsagePage extends React.Component {
     }
     let cost = (cur - prv) * units;
     this.setState({
-      headerText : cost + ' THB'
+      headerText : cost.toPrecision(6) + ' THB'
     });
 
   }
@@ -176,6 +176,7 @@ const styles = StyleSheet.create({
     height : 330,
     backgroundColor : '#FFF',
     padding : 10,
+    paddingTop : 20
   },
   label : {
     color : '#00afb8',

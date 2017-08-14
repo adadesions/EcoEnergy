@@ -33,7 +33,7 @@ export default class AContent extends React.Component {
         return (<EstimatePage _onPress={ this._changePage}/>)
         break;
       default :
-        return (<HomePage />)
+        return (<HomePage _onPress={ this._changePage}/>)
     }
   }
 

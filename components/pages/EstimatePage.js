@@ -97,15 +97,15 @@ export default class EstimatePage extends React.Component {
     }
     let monthly = sum*30;
     // if( monthly > 150 ) {
-      const units = [ 3.2484, 4.2218, 4.4217];
-      result = 150*units[0];
-      if( monthly >= 250 && monthly < 400){
-        result += (monthly - 150) * units[1];
-      }
-      else {
-        result += 250*units[1];
-        result += (monthly - 400) * units[2];
-      }
+    const units = [ 3.2484, 4.2218, 4.4217];
+    result = 150*units[0];
+    if( monthly >= 250 && monthly < 400){
+      result += (monthly - 150) * units[1];
+    }
+    else {
+      result += 250*units[1];
+      result += (monthly - 400) * units[2];
+    }
     // }
     // else {
     //   const units = [ 2.3488, 2.9882, 3.2405, 3.6237, 3.7171, 4.2218, 4.4217 ];
