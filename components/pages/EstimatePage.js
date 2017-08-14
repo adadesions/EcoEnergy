@@ -87,31 +87,38 @@ export default class EstimatePage extends React.Component {
 
   _onCalculate() {
     let info = [];
-    let amount = parseInt(this.state.amount);
-    let time = parseInt(this.state.timeOrder);
+    let amount = this.state.amount;
+    let time = this.state.timeOrder;
     let sum = 0;
     let result = 0;
     for(let i = 0; i < amount; i++){
-      info[i] = ( devices[i].cPower*time[i] )/1000;
+      info[i] = parseFloat( ( devices[i].cPower*time[i] )/1000 );
       sum = sum + info[i];
     }
-    let monthly = sum*30;
-    // if( monthly > 150 ) {
+    let counter = 0;
     const units = [ 3.2484, 4.2218, 4.4217];
-    result = 150*units[0];
-    if( monthly >= 250 && monthly < 400){
-      result += (monthly - 150) * units[1];
+
+    for(let i = 0; i < info.length; i++){
+      counter = counter + info[i]*30;
+      console.log(`counter : ${counter} , info[${i}] : ${info[i]}`);
+      if( counter >= 0 && counter <= 150 ){
+        result = result + (info[i] * units[0]);
+        console.log('case 1');
+      }
+      else if( counter > 150 && counter <= 400 ){
+        result = result + (info[i] * units[1]);
+        console.log('case 2');
+      }
+      else if( counter > 400 ){
+        result = result + (info[i] * units[2]);
+        console.log('case 3');
+      }
     }
-    else {
-      result += 250*units[1];
-      result += (monthly - 400) * units[2];
-    }
-    // }
-    // else {
-    //   const units = [ 2.3488, 2.9882, 3.2405, 3.6237, 3.7171, 4.2218, 4.4217 ];
-    // }
+
+    console.log(`result : ${result}`);
+
     this.setState({
-      header : result.toPrecision(6) + ' THB'
+      header : result.toPrecision(6) + ' THB/Month'
     });
 
   }
@@ -119,6 +126,12 @@ export default class EstimatePage extends React.Component {
   _onAddMore() {
     this.setState({
       amount : this.state.amount + 1
+    });
+  }
+
+  _onRemoveOne() {
+    this.setState({
+      amount : this.state.amount - 1
     });
   }
 
@@ -135,20 +148,34 @@ export default class EstimatePage extends React.Component {
 
           <View style={ styles.buttonsPack }>
             <Button
-              danger
+              success
+              rounded
+              large
               style={ styles.button }
               onPress={ () => this._onAddMore() }
               >
-              <Text>Add more</Text>
+              <Text style={{ fontSize : 30, fontWeight : 'bold' }}>+</Text>
             </Button>
+
             <Button
-              success
+              danger
+              rounded
+              large
               style={ styles.button }
-              onPress={ () => this._onCalculate() }
+              onPress={ () => this._onRemoveOne() }
               >
-              <Text>Calculate</Text>
+              <Text style={{ fontSize : 30, fontWeight : 'bold' }}>-</Text>
             </Button>
+
           </View>
+          <Button
+            info
+            block
+            style={ styles.button }
+            onPress={ () => this._onCalculate() }
+            >
+            <Text>Calculate</Text>
+          </Button>
 
           </View>
         </View>
@@ -182,7 +209,6 @@ export default class EstimatePage extends React.Component {
           >
            <Icon name="person" />
          </Button>
-
         </Fab>
       </Image>
     );
@@ -209,7 +235,7 @@ const styles = StyleSheet.create({
     opacity: 0.8
   },
   header : {
-    fontSize: 42,
+    fontSize: 38,
     fontWeight: 'bold',
     color: '#fff',
     top: 70,
